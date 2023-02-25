@@ -1,12 +1,13 @@
 // all routes are prefixed with /api/users.
 
-import { } from '../controllers/userController';
 
 import express from 'express';
+import { updateUser } from '../controllers/userController';
 
 const userRouter = express.Router();
 
 //update User
+userRouter.put('/:id', updateUser)
 
 //delete User
 
