@@ -2,14 +2,30 @@
 
 
 import express from 'express';
-import { updateUser } from '../controllers/userController';
+import { updateUser, deleteUser, getUser, subscribeUser, unsubscribeUser, like, dislike } from '../controllers/userController';
+import { verifyToken } from '../handlers/verifyToken';
 
 const userRouter = express.Router();
 
 //update User
-userRouter.put('/:id', updateUser)
+userRouter.put('/:id', verifyToken, updateUser)
 
 //delete User
+userRouter.delete('/:id', verifyToken, deleteUser)
 
+//get User
+userRouter.get('/find/:id', getUser)
+
+//subscribe user
+userRouter.put('/subscribe/:id', verifyToken, subscribeUser)
+
+//unsubscribe user
+userRouter.put('/unsubscribe/:id', verifyToken, unsubscribeUser)
+
+//like
+userRouter.put('/like/:videoId', verifyToken, like)
+
+//dislike
+userRouter.put('/dislike/:videoId', verifyToken, dislike)
 
 export default userRouter;
