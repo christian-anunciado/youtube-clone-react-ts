@@ -19,7 +19,7 @@ const mongoURL = process.env.MONGO_TEST as string;
 
 const connect = () => {
     mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-        console.log('Connected to MongoDB!');
+        console.log('Connected to MongoDB!')
     });
 };
 
