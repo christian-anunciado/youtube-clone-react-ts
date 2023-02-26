@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "npx tsc -w",
     "start": "nodemon -L dist/index.js",
-    "dev": "nodemon -L -w 'src/' -e ts --exec \"tsc --incremental && node dist/index.js\""
+    "dev": "npx nodemon -L -w 'src/' -e ts --exec \"tsc --incremental && node dist/index.js\""
   },
   "keywords": [],
   "author": "",
