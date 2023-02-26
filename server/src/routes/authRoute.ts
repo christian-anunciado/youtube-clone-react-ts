@@ -1,21 +1,18 @@
 // all routes are prefixed with /api/users.
 
-import { signin, signUp } from '../controllers/authController.js';
+import { signin, signUp } from "../controllers/authController";
 
-import express from 'express';
+import express from "express";
 
 const authController = express.Router();
 
-
 // create a new user
-authController.post('/signup', signUp);
+authController.post("/signup", signUp);
 
 // login
-authController.post('/signin', signin);
+authController.post("/signin", signin);
 
 // google login
-authController.post('/google',);
-
-
+authController.post("/google");
 
 export default authController;
