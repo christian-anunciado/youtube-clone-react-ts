@@ -1,10 +1,28 @@
-import mongoose from "mongoose";
+import mongoose, { Model } from "mongoose";
 import bcrypt from "bcryptjs";
 import { NextFunction } from "express";
 import { createError } from "../handlers/error";
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+interface IUser {
+  name: string;
+  email: string;
+  password: string;
+  img: string;
+  subscribers: number;
+  subscribedChannels: number;
+  subscribersUsers: string[];
+}
+
+interface UserModel extends Model<IUser> {
+  findByCredentials(
+    name: string,
+    password: string,
+    next: NextFunction
+  ): Promise<IUser>;
+}
+
+const userSchema = new Schema<IUser, UserModel>(
   {
     name: {
       type: String,
@@ -73,7 +91,7 @@ userSchema.statics.findByCredentials = async function (
     next(createError(404, "User not found!"));
   }
 
-  const isMatch = bcrypt.compareSync(password, user.password);
+  const isMatch = bcrypt.compareSync(password, user!.password);
 
   if (!isMatch) {
     next(createError(401, "Wrong password!"));
@@ -82,6 +100,6 @@ userSchema.statics.findByCredentials = async function (
   return user;
 };
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model<IUser, UserModel>("User", userSchema);
 
 export default User;
