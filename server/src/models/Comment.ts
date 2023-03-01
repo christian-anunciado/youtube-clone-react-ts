@@ -5,6 +5,10 @@ interface IComments {
   userId: string;
   videoId: string;
   description: string;
+  likes: string[];
+  dislikes: string[];
+  replies: string[];
+  score: number;
 }
 // create a mongoose schema for the video
 const commentSchema = new Schema<IComments>(
@@ -20,6 +24,22 @@ const commentSchema = new Schema<IComments>(
     description: {
       type: String,
       required: true,
+    },
+    likes: {
+      type: [String],
+      default: [],
+    },
+    dislikes: {
+      type: [String],
+      default: [],
+    },
+    replies: {
+      type: [String],
+      default: [],
+    },
+    score: {
+      type: Number,
+      default: 0,
     },
   },
   {

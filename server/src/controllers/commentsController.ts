@@ -33,11 +33,13 @@ export const deleteComment = async (
   try {
     const comment = await Comments.findById(req.params.id);
     if (!comment) {
-      next(createError(404, "Comment not found!"));
+      return next(createError(404, "Comment not found!"));
     }
 
-    if (comment.userId !== req.user?.id) {
-      next(createError(401, "You are not authorized to delete this comment!"));
+    if (comment!.userId !== req.user?.id) {
+      return next(
+        createError(401, "You are not authorized to delete this comment!")
+      );
     }
 
     await Comments.findByIdAndDelete(req.params.id);
@@ -57,7 +59,7 @@ export const getComments = async (
 ) => {
   try {
     const comments = await Comments.find({ videoId: req.params.id }).sort({
-      createdAt: -1,
+      score: -1, //sort by score
     });
 
     res.status(200).json(comments);
@@ -74,11 +76,13 @@ export const updateComment = async (
   try {
     const comment = await Comments.findById(req.params.id);
     if (!comment) {
-      next(createError(404, "Comment not found!"));
+      return next(createError(404, "Comment not found!"));
     }
 
-    if (comment.userId !== req.user?.id) {
-      next(createError(401, "You are not authorized to update this comment!"));
+    if (comment!.userId !== req.user?.id) {
+      return next(
+        createError(401, "You are not authorized to update this comment!")
+      );
     }
 
     const updatedComment = await Comments.findByIdAndUpdate(
@@ -92,6 +96,60 @@ export const updateComment = async (
     res.status(200).json({
       updatedComment,
       message: "Comment updated successfully!",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const likeComment = async (
+  req: RequestWithUser,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const comment = await Comments.findById(req.params.id);
+    if (!comment) {
+      return next(createError(404, "Comment not found!"));
+    }
+    await Comments.findByIdAndUpdate(
+      req.params.id,
+      {
+        $addToSet: { likes: req.user?.id },
+        $pull: { dislikes: req.user?.id },
+        $inc: { score: 1 },
+      },
+      { new: true }
+    );
+    res.status(200).json({
+      message: "Comment liked successfully!",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const dislikeComment = async (
+  req: RequestWithUser,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const comment = await Comments.findById(req.params.id);
+    if (!comment) {
+      return next(createError(404, "Comment not found!"));
+    }
+    await Comments.findByIdAndUpdate(
+      req.params.id,
+      {
+        $addToSet: { dislikes: req.user?.id },
+        $pull: { likes: req.user?.id },
+        $inc: { score: -1 },
+      },
+      { new: true }
+    );
+    res.status(200).json({
+      message: "Comment disliked successfully!",
     });
   } catch (error) {
     next(error);

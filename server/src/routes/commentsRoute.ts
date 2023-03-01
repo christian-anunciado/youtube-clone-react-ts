@@ -1,5 +1,4 @@
 // all routes are prefixed with /api/comments.
-
 import express from "express";
 import { verifyToken } from "../handlers/verifyToken";
 import {
@@ -7,6 +6,8 @@ import {
   deleteComment,
   getComments,
   updateComment,
+  dislikeComment,
+  likeComment,
 } from "./../controllers/commentsController";
 
 const commentsRouter = express.Router();
@@ -22,5 +23,11 @@ commentsRouter.get("/:id", getComments);
 
 //update Comment
 commentsRouter.put("/:id", verifyToken, updateComment);
+
+//like Comment
+commentsRouter.put("/like/:id", verifyToken, likeComment);
+
+//dislike Comment
+commentsRouter.put("/dislike/:id", verifyToken, dislikeComment);
 
 export default commentsRouter;
