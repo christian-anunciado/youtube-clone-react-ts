@@ -21,14 +21,14 @@ module.exports = {
       darkBgLighter: '#1c1f23',
       darkText: 'white',
       darkTextSoft: '#aaa',
-      soft: '#282424',
+      darkSoft: '#33383f',
 
       // Light
       bgLight: '#f9f9f9',
       bgLighter: 'white',
       text: 'black',
       textSoft: '#606060',
-      soft: '#f5f5f5',
+      soft: '#f2f2f2',
 
 
     },

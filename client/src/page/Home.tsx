@@ -8,7 +8,7 @@ type Props = {};
 function Home({}: Props) {
   const theme = useSelector((state: any) => state.theme);
   return (
-    <div className={`${theme?.darkMode && "dark"}`}>
+    <div className={`${theme?.darkMode && "dark"} scroll-smooth`}>
       <div className="flex bg-bgLight dark:bg-darkBgLight">
         <Menu />
         <Main />
