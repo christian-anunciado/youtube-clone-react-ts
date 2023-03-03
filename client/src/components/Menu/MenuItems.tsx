@@ -58,7 +58,7 @@ const Divider = () => {
 function MenuItems({}: Props) {
   const [selectedMenu, setSelectedMenu] = useState(0);
   return (
-    <div className="m-0 min-h-0 flex-1 basis-auto overflow-hidden hover:overflow-y-scroll">
+    <div className="m-0 min-h-0 flex-1 basis-auto overflow-hidden hover:overflow-y-auto">
       <div className="flex flex-col gap-3">
         <div>
           <MenuItem
@@ -151,6 +151,42 @@ function MenuItems({}: Props) {
             isActive={selectedMenu === 10}
             onClick={() => setSelectedMenu(10)}
           />
+        </div>
+        <Divider />
+        <div>
+          <MenuItem
+            iconActive={<MdSettings size={"1.2em"} />}
+            iconDefault={<MdOutlineSettings size={"1.2em"} />}
+            iconName="Settings"
+            isActive={selectedMenu === 11}
+            onClick={() => setSelectedMenu(11)}
+          />
+          <MenuItem
+            iconActive={<MdFlag size={"1.2em"} />}
+            iconDefault={<MdOutlineFlag size={"1.2em"} />}
+            iconName="Report"
+            isActive={selectedMenu === 12}
+            onClick={() => setSelectedMenu(12)}
+          />
+          <ToggleDarkMode />
+        </div>
+        <Divider />
+        <div>
+          <MenuItem
+            iconActive={<MdSettings size={"1.2em"} />}
+            iconDefault={<MdOutlineSettings size={"1.2em"} />}
+            iconName="Settings"
+            isActive={selectedMenu === 11}
+            onClick={() => setSelectedMenu(11)}
+          />
+          <MenuItem
+            iconActive={<MdFlag size={"1.2em"} />}
+            iconDefault={<MdOutlineFlag size={"1.2em"} />}
+            iconName="Report"
+            isActive={selectedMenu === 12}
+            onClick={() => setSelectedMenu(12)}
+          />
+          <ToggleDarkMode />
         </div>
         <Divider />
         <div>
