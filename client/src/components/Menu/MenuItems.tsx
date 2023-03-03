@@ -101,7 +101,12 @@ function MenuItems({}: Props) {
           />
         </div>
         <Divider />
-        <SignIn />
+        <div className="flex flex-col gap-3 px-3 py-2">
+          <p className="text-xs">
+            Sign in to like videos, comment and subscribe.
+          </p>
+          <SignIn />
+        </div>
         <Divider />
         <div>
           <MenuItem
@@ -160,8 +165,8 @@ function MenuItems({}: Props) {
             iconActive={<MdFlag size={"1.2em"} />}
             iconDefault={<MdOutlineFlag size={"1.2em"} />}
             iconName="Report"
-            isActive={selectedMenu === 11}
-            onClick={() => setSelectedMenu(11)}
+            isActive={selectedMenu === 12}
+            onClick={() => setSelectedMenu(12)}
           />
           <ToggleDarkMode />
         </div>
