@@ -1,4 +1,15 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
+const fontFamily = defaultTheme.fontFamily;
+fontFamily['sans'] = [
+  'Roboto', // <-- Roboto is a default sans font now
+  'Open Sans',
+  'sans-serif',
+  'system-ui',
+  // <-- you may provide more font fallbacks here
+];
+
 module.exports = {
   content: [
     "./index.html",
@@ -6,6 +17,7 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
+    fontFamily: fontFamily,
 
     colors: {
       transparent: 'transparent',

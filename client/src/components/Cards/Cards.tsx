@@ -5,7 +5,7 @@ type Props = {};
 
 function Cards({}: Props) {
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(360px,auto))] justify-items-center gap-x-0 gap-y-7 py-6 px-8">
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(0,360px))] justify-center justify-items-center gap-x-3 gap-y-7 py-6 px-8">
       <Card />
       <Card />
       <Card />

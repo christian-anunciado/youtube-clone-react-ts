@@ -1,6 +1,7 @@
 import React from "react";
 import Deku from "../../assets/hqdefault.webp";
 import AvatarSample from "../../assets/2.webp";
+import { Link } from "react-router-dom";
 
 type Props = {
   children: React.ReactNode;
@@ -15,7 +16,7 @@ type TextProps = {
 };
 
 const Container = ({ children }: Props) => (
-  <div className="container w-[360px] cursor-pointer">{children}</div>
+  <div className="container cursor-pointer">{children}</div>
 );
 
 const Wrapper = ({ children }: Props) => (
@@ -45,13 +46,13 @@ const Avatar = ({ src }: ImageProps) => (
 const TextDetails = ({ children }: Props) => <div className="">{children}</div>;
 
 const Title = ({ text }: TextProps) => (
-  <div className="text-base font-medium text-[#0f0f0f] dark:text-darkText">
+  <div className="overflow-ellipsis text-base font-[500] text-[#0f0f0f] dark:text-darkText">
     {text || ""}
   </div>
 );
 
 const ChannelName = ({ text }: TextProps) => (
-  <div className="mt-1 text-sm text-[#606060] dark:text-darkTextSoft">
+  <div className="mt-0.5 text-sm text-[#606060] dark:text-darkTextSoft">
     {text || ""}
   </div>
 );
@@ -64,19 +65,21 @@ const Info = ({ text }: TextProps) => (
 
 function Card({}: Props) {
   return (
-    <Container>
-      <Wrapper>
-        <Thumbnail src={Deku} />
-        <Details>
-          <Avatar src={AvatarSample} />
-          <TextDetails>
-            <Title text="My Hero Academia" />
-            <ChannelName text="SkrowRepaP" />
-            <Info text="1.2M views • 2 days ago" />
-          </TextDetails>
-        </Details>
-      </Wrapper>
-    </Container>
+    <Link to={`video/test`}>
+      <Container>
+        <Wrapper>
+          <Thumbnail src={Deku} />
+          <Details>
+            <Avatar src={AvatarSample} />
+            <TextDetails>
+              <Title text="RETURNING TO PROFESSIONAL" />
+              <ChannelName text="SkrowRepaP" />
+              <Info text="1.2M views • 2 days ago" />
+            </TextDetails>
+          </Details>
+        </Wrapper>
+      </Container>
+    </Link>
   );
 }
 
