@@ -20,5 +20,9 @@
   background: transparent;
 }
 
+* {
+  scrollbar-gutter: stable;
+}
+
 @tailwind components;
 @tailwind utilities;
