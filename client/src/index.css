@@ -15,12 +15,7 @@
   border-radius: 16px;
 }
 
-*::-webkit-scrollbar-track {
-  background-color: transparent;
-  background: transparent;
-}
-
-* {
+.scroll-stable {
   scrollbar-gutter: stable;
 }
 

@@ -58,7 +58,7 @@ const Divider = () => {
 function MenuItems({}: Props) {
   const [selectedMenu, setSelectedMenu] = useState(0);
   return (
-    <div className="m-0 mt-2 min-h-0 flex-1 basis-auto overflow-hidden hover:overflow-y-auto">
+    <div className="scroll-stable m-0 mt-2 min-h-0 flex-1 basis-auto overflow-hidden hover:overflow-y-auto">
       <div className="flex flex-col gap-3">
         <div>
           <MenuItem
