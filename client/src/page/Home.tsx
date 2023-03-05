@@ -1,18 +1,11 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import Main from "../components/Main/Main";
-import Menu from "../components/Menu/Menu";
+import Cards from "../components/Cards/Cards";
 
 type Props = {};
 
 function Home({}: Props) {
-  const theme = useSelector((state: any) => state.theme);
   return (
-    <div className={`${theme?.darkMode && "dark"} scroll-smooth`}>
-      <div className="flex bg-bgLight dark:bg-darkBgLight">
-        <Menu />
-        <Main />
-      </div>
+    <div>
+      <Cards />
     </div>
   );
 }
