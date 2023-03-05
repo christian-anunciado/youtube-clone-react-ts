@@ -15,7 +15,7 @@ const Container = ({ children }: PropsContainer) => (
 );
 
 const Wrapper = ({ children }: PropsContainer) => (
-  <div className="relative flex h-full items-center justify-end px-10">
+  <div className="relative flex h-full items-center justify-end px-6">
     {children}
   </div>
 );
