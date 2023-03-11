@@ -4,15 +4,14 @@ import { TbDownload } from "react-icons/tb";
 import { RiShareForwardLine } from "react-icons/ri";
 import LikeDislike from "../LikeDislike/LikeDislike";
 import SubscriptionStatus from "../SubscriptionStatus/SubscriptionStatus";
+import MoreInfo from "../MoreInfo/MoreInfo";
+import Comments from "../Comments/Comments";
+import Avatar from "../Avatar/Avatar";
 
 type Props = {};
 
 type ChildProps = {
   children: React.ReactNode;
-};
-
-type ImageProps = {
-  src?: string;
 };
 
 type TextProps = {
@@ -35,15 +34,15 @@ type ButtonProps = {
 
 const Content = () => {
   return (
-    <div className="max-h[720px] h-[546px]">
+    <div className="m-h[720px] relative overflow-hidden pt-[56.25%]">
       <iframe
         width="100%"
         height="100%"
         src="https://www.youtube-nocookie.com/embed/yIaXoop8gl4"
         title="React Video Sharing App UI Design | Youtube UI Clone with React"
-        frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
         allowfullscreen="allowfullscreen"
+        className="absolute top-0 left-0 h-full w-full border-0"
       ></iframe>
     </div>
   );
@@ -61,14 +60,6 @@ const Information = ({ children }: ChildProps) => {
   return <div className="flex items-center justify-between">{children}</div>;
 };
 
-const Avatar = ({ src }: ImageProps) => (
-  <img
-    src={src || ""}
-    alt=""
-    className="h-[40px] w-[40px] rounded-full bg-darkTextSoft object-cover"
-  />
-);
-
 const ChannelName = ({ text }: TextProps) => (
   <div className="mt-0.5 font-medium text-[#0F0F0F] dark:text-darkText">
     {text || ""}
@@ -84,7 +75,7 @@ const Info = ({ text }: TextProps) => (
 const OwnerInfo = (props: OwnerProps) => {
   return (
     <div className="flex items-center gap-2">
-      <Avatar src={props.avatar} />
+      <Avatar src={props.avatar} height={"40"} width={"40"} />
       <div className="flex flex-col">
         <ChannelName text={props.channelName} />
         <Info text={props.subscribers} />
@@ -132,6 +123,8 @@ function VideoContent({}: Props) {
               />
             </div>
           </Information>
+          <MoreInfo />
+          <Comments />
         </Details>
       </div>
     </div>
