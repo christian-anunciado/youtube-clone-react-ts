@@ -40,7 +40,7 @@ module.exports = {
       bgLighter: 'white',
       text: 'black',
       textSoft: '#606060',
-      soft: '#f2f2f2',
+      soft: '#f3f3f3',
 
 
     },

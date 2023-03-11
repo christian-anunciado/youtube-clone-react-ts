@@ -9,7 +9,7 @@ type PropsContainer = {
 };
 
 const Container = ({ children }: PropsContainer) => (
-  <div className="sticky top-0 h-[56px] w-full bg-bgLighter dark:bg-darkBgLighter">
+  <div className="sticky top-0 z-50 h-[56px] w-full bg-bgLighter dark:bg-darkBgLighter">
     {children}
   </div>
 );

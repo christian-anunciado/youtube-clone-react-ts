@@ -2,17 +2,18 @@ import React from "react";
 import Deku from "../../assets/hqdefault.webp";
 import AvatarSample from "../../assets/2.webp";
 import { Link } from "react-router-dom";
+import Avatar from "../Avatar/Avatar";
 
 type Props = {
   children: React.ReactNode;
 };
 
-type ImageProps = {
-  src?: string;
-};
-
 type TextProps = {
   text: string;
+};
+
+type ThumbnailProps = {
+  src: string;
 };
 
 const Container = ({ children }: Props) => (
@@ -23,24 +24,16 @@ const Wrapper = ({ children }: Props) => (
   <div className="flex flex-col gap-3">{children}</div>
 );
 
-const Thumbnail = ({ src }: ImageProps) => (
+const Thumbnail = ({ src }: ThumbnailProps) => (
   <img
     src={src || ""}
     alt=""
-    className="h-[202px] w-full rounded-xl border-none bg-darkTextSoft object-cover outline-none"
+    className="pointer-events-none h-[202px] w-full rounded-xl border-none bg-darkTextSoft object-cover outline-none"
   />
 );
 
 const Details = ({ children }: Props) => (
   <div className="flex gap-2.5">{children}</div>
-);
-
-const Avatar = ({ src }: ImageProps) => (
-  <img
-    src={src || ""}
-    alt=""
-    className="h-[36px] w-[36px] rounded-full bg-darkTextSoft object-cover"
-  />
 );
 
 const TextDetails = ({ children }: Props) => <div className="">{children}</div>;
@@ -70,7 +63,9 @@ function Card({}: Props) {
         <Wrapper>
           <Thumbnail src={Deku} />
           <Details>
-            <Avatar src={AvatarSample} />
+            <div>
+              <Avatar src={AvatarSample} height={"36"} width={"36"} />
+            </div>
             <TextDetails>
               <Title text="RETURNING TO PROFESSIONAL" />
               <ChannelName text="SkrowRepaP" />
