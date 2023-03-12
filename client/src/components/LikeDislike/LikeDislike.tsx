@@ -49,12 +49,14 @@ function LikeDislike({}: Props) {
       {/* Divider */}
       <div className="h-[60%] w-[1px] bg-[#DFDFDF] dark:bg-[#575757]" />
       <button
-        className="h-full rounded-r-full pl-3 pr-4 hover:bg-divider dark:hover:bg-[#575757]"
+        className="h-full rounded-r-full pl-3 pr-4 hover:bg-divider dark:hover:bg-[#575757] "
         onClick={handleDislike}
       >
-        {state === "like" && <AiOutlineDislike size={"1.5em"} />}
-        {state === "default" && <AiOutlineDislike size={"1.5em"} />}
-        {state === "dislike" && <AiFillDislike size={"1.5em"} />}
+        <div className="-scale-x-100 ">
+          {state === "like" && <AiOutlineDislike size={"1.5em"} />}
+          {state === "default" && <AiOutlineDislike size={"1.5em"} />}
+          {state === "dislike" && <AiFillDislike size={"1.5em"} />}
+        </div>
       </button>
     </div>
   );

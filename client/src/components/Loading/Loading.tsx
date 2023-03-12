@@ -6,11 +6,10 @@ type Props = {};
 
 function Loading({}: Props) {
   const theme = useSelector((state: any) => state.theme);
-  console.log("Loading", theme.darkMode);
 
   return (
     <div className={`${theme?.darkMode && "dark"}`}>
-      <div className="flex h-screen w-screen items-center justify-center bg-bgLight dark:bg-bgDark">
+      <div className="dark:bg-bgDark flex h-screen w-screen items-center justify-center bg-bgLight">
         <ClipLoader />
       </div>
     </div>

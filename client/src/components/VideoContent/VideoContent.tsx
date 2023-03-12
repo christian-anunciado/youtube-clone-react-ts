@@ -7,6 +7,7 @@ import SubscriptionStatus from "../SubscriptionStatus/SubscriptionStatus";
 import MoreInfo from "../MoreInfo/MoreInfo";
 import Comments from "../Comments/Comments";
 import Avatar from "../Avatar/Avatar";
+import NumberFormatter from "../../helpers/NumberFormatter";
 
 type Props = {};
 
@@ -21,7 +22,11 @@ type TextProps = {
 type OwnerProps = {
   avatar: string;
   channelName: string;
-  subscribers: string;
+  subscribers: number;
+};
+
+type SubscribersProps = {
+  subscribers: number;
 };
 
 type ButtonProps = {
@@ -66,9 +71,9 @@ const ChannelName = ({ text }: TextProps) => (
   </div>
 );
 
-const Info = ({ text }: TextProps) => (
+const Subscribers = ({ subscribers }: SubscribersProps) => (
   <div className="text-xs font-normal text-[#606060] dark:text-darkTextSoft">
-    {text || ""}
+    {`${NumberFormatter(subscribers) || ""} subscribers`}
   </div>
 );
 
@@ -78,7 +83,7 @@ const OwnerInfo = (props: OwnerProps) => {
       <Avatar src={props.avatar} height={"40"} width={"40"} />
       <div className="flex flex-col">
         <ChannelName text={props.channelName} />
-        <Info text={props.subscribers} />
+        <Subscribers subscribers={props.subscribers} />
       </div>
     </div>
   );
@@ -105,7 +110,7 @@ function VideoContent({}: Props) {
               <OwnerInfo
                 avatar={AvatarSample}
                 channelName="Channel Name"
-                subscribers="1.2M subscribers"
+                subscribers={1_200_200}
               />
               <SubscriptionStatus />
             </div>
