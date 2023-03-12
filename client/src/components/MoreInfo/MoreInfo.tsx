@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NumberFormatter from "../../helpers/NumberFormatter";
 
 type Props = {};
 
@@ -27,12 +28,9 @@ const MainInfoContainer = ({ children }: ChildrenProps) => (
 );
 
 const Views = (props: ViewProps) => {
-  const formatter = new Intl.NumberFormat("en-US", {
-    notation: "compact",
-  });
   return (
     <div className="text-sm font-medium">{`${
-      formatter.format(props.views) || ""
+      NumberFormatter(props.views) || ""
     } views`}</div>
   );
 };
