@@ -6,7 +6,7 @@ type Props = {};
 
 function Video({}: Props) {
   return (
-    <div className="flex gap-2 px-8 py-6">
+    <div className="flex gap-6 px-8 py-6">
       <VideoContent />
       <Recommendations />
     </div>
