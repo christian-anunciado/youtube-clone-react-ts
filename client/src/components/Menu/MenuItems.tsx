@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import MenuItem from "./MenuItem";
 import { AiOutlineHome, AiFillHome } from "react-icons/ai";
 import {
@@ -34,6 +34,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { toggleDarkMode } from "../../redux/themeRedux";
 import SignIn from "../SignIn/SignIn";
+import { MenuContext } from "../../context/menuContext";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
@@ -56,7 +58,10 @@ const Divider = () => {
 };
 
 function MenuItems({}: Props) {
-  const [selectedMenu, setSelectedMenu] = useState(0);
+  const menuContext = useContext(MenuContext);
+  const selectedMenu = menuContext.selectedMenu;
+  const setSelectedMenu = menuContext.setSelectedMenu;
+  const navigate = useNavigate();
   return (
     <div className="scroll-stable m-0 mt-2 min-h-0 flex-1 basis-auto overflow-hidden hover:overflow-y-auto">
       <div className="flex flex-col gap-3">
@@ -66,7 +71,10 @@ function MenuItems({}: Props) {
             iconDefault={<AiOutlineHome size={"1.2em"} />}
             iconName="Home"
             isActive={selectedMenu === 0}
-            onClick={() => setSelectedMenu(0)}
+            onClick={() => {
+              setSelectedMenu(0);
+              navigate("/");
+            }}
           />
           <MenuItem
             iconActive={<MdExplore size={"1.2em"} />}
@@ -101,7 +109,10 @@ function MenuItems({}: Props) {
           />
         </div>
         <Divider />
-        <div className="flex flex-col gap-3 px-3 py-2">
+        <div
+          className="flex flex-col gap-3 px-3 py-2"
+          onClick={() => setSelectedMenu(-1)}
+        >
           <p className="text-xs">
             Sign in to like videos, comment and subscribe.
           </p>
