@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./page/Home";
 import TestPage from "./page/TestPage";
 import Video from "./page/Video";
+import Login from "./page/Login";
 
 const Layout = () => {
   const theme = useSelector((state: any) => state.theme);
@@ -29,6 +30,7 @@ function App() {
       children: [
         { path: "/", element: <Home /> },
         { path: "/video/:id", element: <Video /> },
+        { path: "/login", element: <Login /> },
       ],
     },
   ]);

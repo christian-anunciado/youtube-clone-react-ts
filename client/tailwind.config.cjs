@@ -18,33 +18,33 @@ module.exports = {
   darkMode: 'class',
   theme: {
     fontFamily: fontFamily,
+    extend: {
+      colors: {
+        transparent: 'transparent',
+        white: '#fff',
+        blueBorder: '#3ea6ff',
+        blueSoft: '#def1ff',
+        darkBlueSoft: '#263850',
+        divider: '#ebebeb',
+        darkDivider: '#333333',
 
-    colors: {
-      transparent: 'transparent',
-      white: '#fff',
-      blueBorder: '#3ea6ff',
-      blueSoft: '#def1ff',
-      darkBlueSoft: '#263850',
-      divider: '#ebebeb',
-      darkDivider: '#333333',
+        // Dark
+        darkBgLight: '#212529',
+        darkBgLighter: '#1c1f23',
+        darkText: 'white',
+        darkTextSoft: '#aaa',
+        darkSoft: '#33383f',
 
-      // Dark
-      darkBgLight: '#212529',
-      darkBgLighter: '#1c1f23',
-      darkText: 'white',
-      darkTextSoft: '#aaa',
-      darkSoft: '#33383f',
-
-      // Light
-      bgLight: '#f9f9f9',
-      bgLighter: 'white',
-      text: 'black',
-      textSoft: '#606060',
-      soft: '#f3f3f3',
+        // Light
+        bgLight: '#f9f9f9',
+        bgLighter: 'white',
+        text: 'black',
+        textSoft: '#606060',
+        soft: '#f3f3f3',
 
 
+      },
     },
-    extend: {},
   },
   plugins: [
     require('@tailwindcss/forms'),

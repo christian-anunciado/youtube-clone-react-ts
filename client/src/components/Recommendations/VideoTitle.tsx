@@ -22,7 +22,7 @@ type DetailsProps = {
 
 const Thumbnail = ({ src }: ThumbnailProps) => {
   return (
-    <div className="h-24 flex-[0.6]">
+    <div className="h-28 flex-[0.8]">
       <img
         src={src || "https://i.ytimg.com/vi/2Z4m4lnjxkY/hqdefault.jpg"}
         alt="thumbnail"
