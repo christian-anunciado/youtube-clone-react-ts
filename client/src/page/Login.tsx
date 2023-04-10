@@ -5,7 +5,7 @@ type Props = {};
 
 const Container = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-5">
+    <div className="flex h-[calc(100%-60px)] flex-col items-center justify-center gap-5">
       {children}
     </div>
   );
@@ -13,7 +13,7 @@ const Container = ({ children }: { children: React.ReactNode }) => {
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="h-[32rem] w-[28rem] rounded-xl border border-darkTextSoft bg-darkText">
+    <div className="h-[32rem] w-[32rem] rounded-xl border border-darkTextSoft bg-darkText">
       {children}
     </div>
   );
@@ -47,7 +47,7 @@ const Form = () => {
             placeholder="Password"
           />
         </div>
-        <p className="prose text-sm dark:text-darkDivider">
+        <p className="prose text-sm dark:text-gray-600">
           Forgot your user or password?{" "}
           <a href="#" className="text-blue-700 no-underline hover:underline">
             Click here
@@ -62,7 +62,7 @@ const Form = () => {
         </p>
         <div className="flex items-center justify-between text-sm">
           <a
-            href="#"
+            href="/register"
             className="-ml-2 rounded p-1 px-2 font-medium text-blue-700 no-underline hover:bg-blue-50"
           >
             Create account
@@ -78,7 +78,7 @@ const Form = () => {
 
 const Footer = () => {
   return (
-    <div className="flex w-[28rem] justify-between text-xs text-textSoft dark:text-darkTextSoft">
+    <div className="flex w-[32rem] justify-between text-xs text-textSoft dark:text-darkTextSoft">
       <div className="flex items-center justify-between gap-7">
         <p>English (United States)</p>
         <MdOutlineArrowDropDown size={"1.3em"} />

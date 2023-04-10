@@ -6,6 +6,7 @@ import Home from "./page/Home";
 import TestPage from "./page/TestPage";
 import Video from "./page/Video";
 import Login from "./page/Login";
+import Register from "./page/Register";
 
 const Layout = () => {
   const theme = useSelector((state: any) => state.theme);
@@ -31,6 +32,7 @@ function App() {
         { path: "/", element: <Home /> },
         { path: "/video/:id", element: <Video /> },
         { path: "/login", element: <Login /> },
+        { path: "/register", element: <Register /> },
       ],
     },
   ]);
