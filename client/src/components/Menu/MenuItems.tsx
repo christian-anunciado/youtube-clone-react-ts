@@ -81,7 +81,10 @@ function MenuItems({}: Props) {
             iconDefault={<MdOutlineExplore size={"1.2em"} />}
             iconName="Explore"
             isActive={selectedMenu === 1}
-            onClick={() => setSelectedMenu(1)}
+            onClick={() => {
+              setSelectedMenu(1);
+              navigate("/trending");
+            }}
           />
           <MenuItem
             iconActive={<MdSubscriptions size={"1.2em"} />}

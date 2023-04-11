@@ -7,6 +7,7 @@ import videosRouter from "./routes/videosRoute";
 import commentsRouter from "./routes/commentsRoute";
 import authController from "./routes/authRoute";
 import { ErrorWithStatus } from "./msc/types";
+import cors from "cors";
 
 dotenv.config();
 
@@ -15,6 +16,17 @@ const app: Application = express();
 const port = process.env.PORT;
 
 const mongoURL = process.env.MONGO_TEST as string;
+
+const allowedOrigins = [
+  "http://localhost:5173/",
+  "https://localhost:5173/",
+  "http://127.0.0.1:5173/",
+  "http://127.0.0.1:5173/",
+];
+
+const options: cors.CorsOptions = {
+  origin: allowedOrigins,
+};
 
 const connect = async () => {
   try {
@@ -36,12 +48,17 @@ const connect = async () => {
   }
 };
 
+// app.use(cors(options));
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/users", userRouter);
 app.use("/api/videos", videosRouter);
 app.use("/api/comments", commentsRouter);
 app.use("/api/auth", authController);
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello World!");
+});
 
 app.use(
   (

@@ -1,11 +1,13 @@
 import Cards from "../components/Cards/Cards";
 
-type Props = {};
+type Props = {
+  type: string;
+};
 
-function Home({}: Props) {
+function Home({ type }: Props) {
   return (
     <div>
-      <Cards />
+      <Cards type={type || "random"} />
     </div>
   );
 }

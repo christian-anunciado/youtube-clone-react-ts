@@ -1,8 +1,12 @@
-import React from "react";
-import Deku from "../../assets/hqdefault.webp";
-import AvatarSample from "../../assets/2.webp";
+import React, { useEffect } from "react";
+import ThumbnailSample from "../../assets/hqdefault.webp";
 import { Link } from "react-router-dom";
 import Avatar from "../Avatar/Avatar";
+import { CardProps } from "../../types/CardProps";
+import NumberFormatter from "../../helpers/NumberFormatter";
+import { format } from "timeago.js";
+import { ChannelProps } from "../../types/ChannelProps";
+import { serverAPI } from "../../connection/serverAPI";
 
 type Props = {
   children: React.ReactNode;
@@ -10,6 +14,11 @@ type Props = {
 
 type TextProps = {
   text: string;
+};
+
+type InfoProps = {
+  views: number;
+  time: string;
 };
 
 type ThumbnailProps = {
@@ -28,7 +37,11 @@ const Thumbnail = ({ src }: ThumbnailProps) => (
   <img
     src={src || ""}
     alt=""
-    className="pointer-events-none h-[202px] w-full rounded-xl border-none bg-darkTextSoft object-cover outline-none"
+    className="pointer-events-none h-[202px] w-[340px] rounded-xl border-none bg-darkTextSoft object-cover outline-none"
+    onError={(e) => {
+      const target = e.target as HTMLImageElement;
+      target.src = ThumbnailSample;
+    }}
   />
 );
 
@@ -50,26 +63,41 @@ const ChannelName = ({ text }: TextProps) => (
   </div>
 );
 
-const Info = ({ text }: TextProps) => (
-  <div className="text-sm font-normal text-[#606060] dark:text-darkTextSoft">
-    {text || ""}
+const Info = ({ views, time }: InfoProps) => (
+  <div className="flex items-center text-sm font-normal text-[#606060] dark:text-darkTextSoft">
+    {NumberFormatter(views)} views
+    <span className="inline-flex h-full items-center justify-center px-1 font-medium">
+      •
+    </span>
+    {format(time)}
   </div>
 );
 
-function Card({}: Props) {
+function Card({ props }: { props: CardProps }) {
+  const [channel, setChannel] = React.useState<ChannelProps>(
+    {} as ChannelProps
+  );
+  useEffect(() => {
+    const fetchChannelName = async () => {
+      const req = await serverAPI.get(`/users/find/${props.userId}`);
+      setChannel(req.data as ChannelProps);
+    };
+    fetchChannelName();
+  }, [props.userId]);
+
   return (
     <Link to={`video/test`}>
       <Container>
         <Wrapper>
-          <Thumbnail src={Deku} />
+          <Thumbnail src={props.thumbnailUrl} />
           <Details>
             <div>
-              <Avatar src={AvatarSample} height={"36"} width={"36"} />
+              <Avatar src={channel?.img} height={"36"} width={"36"} />
             </div>
             <TextDetails>
-              <Title text="RETURNING TO PROFESSIONAL" />
-              <ChannelName text="SkrowRepaP" />
-              <Info text="1.2M views • 2 days ago" />
+              <Title text={props.title} />
+              <ChannelName text={channel?.name} />
+              <Info views={props.views} time={props.createdAt} />
             </TextDetails>
           </Details>
         </Wrapper>

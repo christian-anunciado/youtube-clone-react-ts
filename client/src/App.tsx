@@ -29,7 +29,9 @@ function App() {
       path: "/",
       element: <Layout />,
       children: [
-        { path: "/", element: <Home /> },
+        { path: "/", element: <Home type="random" /> },
+        { path: "/trending", element: <Home type="trending" /> },
+        { path: "/subscriptions", element: <Home type="subscriptions" /> },
         { path: "/video/:id", element: <Video /> },
         { path: "/login", element: <Login /> },
         { path: "/register", element: <Register /> },
