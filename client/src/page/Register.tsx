@@ -76,7 +76,7 @@ const Form = () => {
               placeholder="Confirm Password"
             />
           </div>
-          <span className="prose -mt-3 inline-block pl-2 text-xs text-gray-600">
+          <span className="prose -mt-3 inline-block pl-2 text-xs text-gray-500">
             Use 8 or more characters with a mix of letters, numbers & symbols.
           </span>
         </div>

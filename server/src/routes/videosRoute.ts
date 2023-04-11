@@ -2,7 +2,11 @@
 
 import express from "express";
 import { verifyToken } from "../handlers/verifyToken";
-import { getByTags, searchVideo } from "../controllers/videosController";
+import {
+  getByTags,
+  getRandomVideos,
+  searchVideo,
+} from "../controllers/videosController";
 import {
   updateVideo,
   deleteVideo,
@@ -41,5 +45,7 @@ videosRouter.get("/tags", getByTags);
 
 //get user videos
 videosRouter.get("/search", searchVideo);
+
+videosRouter.get("/random", getRandomVideos);
 
 export default videosRouter;

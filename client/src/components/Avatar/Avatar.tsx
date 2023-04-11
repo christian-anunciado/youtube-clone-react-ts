@@ -1,4 +1,5 @@
 import React from "react";
+import AvatarSample from "../../assets/2.webp";
 
 type Props = {
   src?: string;
@@ -14,6 +15,10 @@ function Avatar(props: Props) {
       width={`${props.width}px`}
       height={`${props.height}px`}
       className={`rounded-full object-cover`}
+      onError={(e) => {
+        const target = e.target as HTMLImageElement;
+        target.src = AvatarSample;
+      }}
     />
   );
 }
